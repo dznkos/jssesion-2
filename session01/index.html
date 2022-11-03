@@ -7,15 +7,45 @@
   <link rel="stylesheet" href="style.css">
   <title>Document</title>
 </head>
-<body>
+<body style="width: 400px; margin:50px auto">
   
-  <button onclick="ejercicio1()">ejercicio1</button>
+  <button onclick="ejercicio1()">ejercicio 1</button>
 
   <hr>
+  <button onclick="ejercicio2()">ejercicio 2</button>
+  <hr>
+  <h2>Ejercicio3</h2>
+  <h3>Registro Producto</h3>
+  <form action="">
+    <ul style="list-style-type: none;">
+      <li>
+        <label for="name">Nombre: </label>
+        <input type="text" id="name">
+      </li>
+      <li>
+        <label for="price">Precio: </label>
+        <input type="text" id="price">
+      </li>
+      <li>
+        <label for="category">Categoria: </label>
+        <select name="category" id="category">
+          <option selected value="n">Natural</option>
+          <option value="g">Generico</option>
+          <option value="o">Otros</option>
+        </select>
+      </li>
+      <li>
+        <label for="quantity">Cantidad: </label>
+        <input type="text" id="quantity">
+      </li>
+    </ul>
+  </form>
 
-
-
-  <button onclick="ejercicio2()">ejercicio2</button>
+  <button onclick="ejercicio3()">registrar</button> 
+  <button onclick="mostrarProductos()">mostrar lista</button> <br> <br> <hr>
+  <button onclick="getCategoria('n')">natural</button>
+  <button onclick="getCategoria('g')">generico</button>
+  <button onclick="getCategoria('o')">otros</button>
 
 
 

@@ -116,15 +116,83 @@ function ejercicio2(){
 
 // Ejercicio 03:
 // En una farmacia se esta haciendo inventario de poductos, para lo que se toman los datos de los nombres, 
-// catergoria, la cantidad que tienen en stock y los precios.   
+// categoria, la cantidad que tienen en stock y los precios.   
 // Se solicita un programa que permita ingresar de uno en uno los productos y mostrar los siguiente:
 // - Mostrar los productos y cantidades por categoria: [natural, generica, otros]
 // - Mostrar el promedio de precios por categoria.
 // - Mostrar el precio promedio de todos los productos.
 // - Mostrar el costo (precio * cantidad) de todos los productos.
     
+var listProducts = []
 
+function ejercicio3(){
+  
+  // var precioCategoria = []
 
+  for (let index = 0; ; index++) {
+    
+    var nombre = document.getElementById('name').value     
+    var precio = parseFloat(document.getElementById('price').value)
+    var categoria = document.querySelector('#category').value
+    var cantidad = parseInt(document.getElementById('quantity').value)
+    
+    var product = {
+        nombre,
+        categoria,
+        cantidad,
+        precio
+      }
+
+      listProducts.push(product)
+      console.log(JSON.stringify(listProducts,'', 2))
+      break;
+  }
+}
+
+function mostrarProductos() {
+  alert(JSON.stringify(listProducts, '', 2))
+}
+
+function getCategoria(cat) {
+
+  var total = 0;
+  var promedio = 0;
+
+  switch (cat) {
+    case 'n':
+        var listResp = listProducts.filter( prod => prod.categoria === 'n')
+        listResp.forEach( prod => {
+          total += prod.cantidad
+          promedio += prod.precio
+        })
+        promedio = promedio / listResp.length
+      break;
+    case 'g':
+        var listResp = listProducts.filter( prod => prod.categoria === 'g')
+        listResp.forEach( prod => {
+          total += prod.cantidad
+        })
+        promedio = promedio / listResp.length
+      break;
+    case 'o':
+        var listResp = listProducts.filter( prod => prod.categoria === 'o')
+        listResp.forEach( prod => {
+          total += prod.cantidad
+        })
+        promedio = promedio / listResp.length
+      break;
+  
+    default:
+      break;
+  }
+  
+
+  alert(` Cantidad por Categoria: ${total} \n
+          Promedio Precio x Categoria: ${promedio} \n
+          Productos de categoria:
+          ${JSON.stringify(listResp, '', 2 )} `)
+
+}
 
 
 
