@@ -15,7 +15,7 @@
   <button onclick="ejercicio2()">ejercicio 2</button>
   <hr>
   <h2>Ejercicio3</h2>
-  <h3>Registro Producto</h3>
+  <h4>Registro Producto</h4>
   <form action="">
     <ul style="list-style-type: none;">
       <li>
@@ -47,6 +47,39 @@
   <button onclick="getCategoria('g')">generico</button>
   <button onclick="getCategoria('o')">otros</button>
 
+  <hr>
+  
+  <h2>Ejercicio 4 </h2>
+  <h4>Registro Paciente</h4>
+  <form action="">
+    <ul style="list-style-type: none;">
+      <li>
+        <label for="edad">Edad: </label>
+        <input type="text" id="edad">
+      </li>
+      <li>
+        <label for="sexo">Sexo: </label>
+        <select name="sexo" id="sexo">
+          <option selected value="m">Masculino</option>
+          <option value="f">Femenino</option>
+        </select>
+      </li>
+      <li>
+        <label for="distrito">Distrito: </label>
+        <select name="distrito" id="distrito">
+          <option selected value="1">Lima</option>
+          <option value="2">Callao</option>
+          <option value="3">Los Olivos</option>
+        </select>
+      </li>      
+    </ul>
+    
+  </form>
+  <button onclick="ejercicio4()" >registrar</button>
+  <button onclick="getList()">ver lista</button>
+
+  <hr>
+  <br><br>
 
 
   <script src="js/script.js"></script>

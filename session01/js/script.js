@@ -24,56 +24,35 @@ function ejercicio1() {
   
   var precio = 0;
 
-  var categoria = parseInt(prompt('Ingrese categoria (1.Tinto/2.Blanco): '))
-  var proveedor = parseInt(prompt('Seleccione proveedor (1. Intipalka / 2. Tacama):'))
-  var tipo = parseInt(prompt('Ingrese numero del tipo vino (1.Seco/2.Semiseco/3.Dulce): '))
+  var proveedor = parseInt(prompt('Seleccione proveedor (1.Intipalka / 2.Tacama):'))
+  var categoria = parseInt(prompt('Ingrese categoria (1.Tinto / 2.Blanco): '))
+  var tipo = parseInt(prompt('Ingrese numero del tipo vino (1.Seco / 2.Semiseco / 3.Dulce): '))
 
 
-  switch (categoria) {
-    case '1':
-        if (proveedor === '1') {
-          precio = 100
-        }
-        else {
-          precio = 200
-        }
+  switch (proveedor) {
+    case 1:
+        (categoria === 1) ? precio = 100 : precio = 80
+        precio = (tipo == 1) ? precio += precio * 0.15 : (tipo === 2) ? precio += precio * 0.10 : precio += precio * 0.05
+  
       break;
-    case '2':
-      if (proveedor === '2') {
-        precio = 80
-      }
-      else {
-        precio = 120
-      }
+    case 2:
+        (categoria === 2) ? precio = 200 : precio = 120
+        precio = (tipo == 1) ? precio += precio * 0.20 : (tipo === 2) ? precio += precio * 0.10 : precio += precio * 0.08
+  
       break;
     default:
       break;
   }
-
-  switch (tipo) {
-    case '1':
-      precio = precio * 0.20
-      break;
-    case '2':
-      precio = precio * 0.10
-      break;
-    case '3':
-      precio = precio * 0.08
-      break;
-    default:
-      break;
-  }
-
+  // console.log(precio)
+  // precio = (tipo == 1) ? precio = precio * 0.20 : (tipo === 2) ? precio = precio * 0.10 : precio = precio * 0.08
+  console.log(precio)
   alert(`Resultado precio: ${precio}`)
 }
-
-
 
 // Ejercicio 02:
 // Desarrollar un programa que permita ingresar los nombres de muchos productos y sus precios.  
 // Se debe dejar de preguntar por ellos cuando ingrese un producto con nombre "Q"
 // Al final deberá mostrar cada producto con su precio y el promedio de precios.
-
 
 function ejercicio2(){
   
@@ -82,8 +61,6 @@ function ejercicio2(){
   for (let index = 0; ; index++) {
     
     var nom_producto = prompt(`Ingrese nombre producto nr° ${index} :` )
-    var precio = parseInt(prompt(`Precio producto nr° ${index} :`))
-    
 
     if (nom_producto.substring(0,1)==='Q') {
       console.log(listProducts)
@@ -103,16 +80,15 @@ function ejercicio2(){
       break;      
     }
     
+    var precio = parseInt(prompt(`Precio producto nr° ${index} :`))
+    
     var product = {
         nom_producto,
         precio
       }
     listProducts.push(product)      
   }
-  
-
 }
-
 
 // Ejercicio 03:
 // En una farmacia se esta haciendo inventario de poductos, para lo que se toman los datos de los nombres, 
@@ -125,39 +101,42 @@ function ejercicio2(){
     
 var listProducts = []
 
-function ejercicio3(){
-  
-  // var precioCategoria = []
+function ejercicio3(){  
 
-  for (let index = 0; ; index++) {
-    
     var nombre = document.getElementById('name').value     
     var precio = parseFloat(document.getElementById('price').value)
     var categoria = document.querySelector('#category').value
     var cantidad = parseInt(document.getElementById('quantity').value)
     
-    var product = {
-        nombre,
-        categoria,
-        cantidad,
-        precio
-      }
-
-      listProducts.push(product)
-      console.log(JSON.stringify(listProducts,'', 2))
-      break;
-  }
+    var product = { nombre, categoria, cantidad, precio }
+    listProducts.push(product)
+    console.log(JSON.stringify(listProducts,'', 2))
 }
 
 function mostrarProductos() {
-  alert(JSON.stringify(listProducts, '', 2))
+
+  var totalCosto = 0; 
+  var promAll = 0;
+
+  listProducts.forEach( prod => {
+    totalCosto += (prod.precio * prod.cantidad)
+    promAll += prod.precio
+  })
+  promAll /=  listProducts.length;
+
+  console.log(totalCosto)
+
+  alert(`=== Informacion Productos === \n
+        Total costo de productos: ${totalCosto} \n  
+        Total promedio de precio: ${promAll} \n  
+      ${JSON.stringify(listProducts, '', 2)}`)
 }
 
 function getCategoria(cat) {
 
   var total = 0;
   var promedio = 0;
-
+   
   switch (cat) {
     case 'n':
         var listResp = listProducts.filter( prod => prod.categoria === 'n')
@@ -180,27 +159,69 @@ function getCategoria(cat) {
           total += prod.cantidad
         })
         promedio = promedio / listResp.length
-      break;
-  
+      break;  
     default:
       break;
   }
   
 
   alert(` Cantidad por Categoria: ${total} \n
-          Promedio Precio x Categoria: ${promedio} \n
+          Promedio Precio x Categoria: ${promedio} \n         
           Productos de categoria:
           ${JSON.stringify(listResp, '', 2 )} `)
-
 }
 
-
-
 // Ejercicio 04:
-// En un hospital ingresan muchos pacientes diariamente, por cada ingreso se registra: edad, sexo y distrito de procedencia.
+// En un hospital ingresan muchos pacientes diariamente, por cada ingreso 
+// se registra: edad, sexo y distrito de procedencia.
 // Se desea ingresar todos los pacientes de un dia y ver lo siguiente:
 // 1. Cantidad de pacientes varones y mujeres
 // 2. Edad promedio de pacientes por dia
 // 3. Cantidad de pacientes por distrito
 // 4. Edad promedio de pacientes por distrito.
     
+var listPacientes = []
+
+function ejercicio4() {
+  
+  var edad = parseInt(document.getElementById('edad').value)     
+  var sexo = document.querySelector('#sexo').value
+  var distrito = parseInt(document.querySelector('#distrito').value)
+  
+  var paciente = { edad,sexo,distrito }
+  listPacientes.push(paciente)
+  console.log(JSON.stringify(listPacientes,'', 2))
+}
+
+function getList() {
+
+  var totalV = 0; 
+  var totalM = 0;
+
+  totalV = listPacientes.filter( paciente => paciente.sexo === 'm').length
+  totalM = listPacientes.filter( paciente => paciente.sexo === 'f').length
+
+  const promEdad = listPacientes.reduce( (a,b) => a + b.edad, 0 ) / listPacientes.length
+  
+  const pxd1 =  listPacientes.filter( p => p.distrito === 1 ).length
+  const pxd2 =  listPacientes.filter( p => p.distrito === 2 ).length 
+  const pxd3 =  listPacientes.filter( p => p.distrito === 3 ).length 
+
+  const exd1 =  listPacientes.filter( p => p.distrito === 1 ).map( p => p.edad ).reduce((a,b)=> a+b, 0)
+  const exd2 =  listPacientes.filter( p => p.distrito === 2 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) 
+  const exd3 =  listPacientes.filter( p => p.distrito === 3 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) 
+
+  alert(`=== Informacion Hospital === \n
+        Cantidad de Varones: ${totalV} \n  
+        Cantidad de Mujeres: ${totalM} \n 
+        Edad promedio : ${promEdad.toFixed(2) } \n 
+        Paciente x Distrito \n 
+        Lima: ${pxd1} ,  
+        Callao: ${pxd2} ,  
+        Los Olivos: ${pxd3} \n  
+        Edad Promd x Distrito \n 
+        Lima: ${exd1} ,  
+        Callao: ${exd2} ,  
+        Los Olivos: ${exd3} \n ` ) 
+      // ${JSON.stringify(listPacientes, '', 2)}`
+}
