@@ -79,7 +79,7 @@ function ejercicio2(){
 
       break;      
     }
-    
+
     var precio = parseInt(prompt(`Precio producto nr° ${index} :`))
     
     var product = {
@@ -207,9 +207,9 @@ function getList() {
   const pxd2 =  listPacientes.filter( p => p.distrito === 2 ).length 
   const pxd3 =  listPacientes.filter( p => p.distrito === 3 ).length 
 
-  const exd1 =  listPacientes.filter( p => p.distrito === 1 ).map( p => p.edad ).reduce((a,b)=> a+b, 0)
-  const exd2 =  listPacientes.filter( p => p.distrito === 2 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) 
-  const exd3 =  listPacientes.filter( p => p.distrito === 3 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) 
+  const exd1 =  listPacientes.filter( p => p.distrito === 1 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) / listPacientes.filter( p => p.distrito === 1 ).length
+  const exd2 =  listPacientes.filter( p => p.distrito === 2 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) / listPacientes.filter( p => p.distrito === 2 ).length
+  const exd3 =  listPacientes.filter( p => p.distrito === 3 ).map( p => p.edad ).reduce((a,b)=> a+b, 0) / listPacientes.filter( p => p.distrito === 3 ).length
 
   alert(`=== Informacion Hospital === \n
         Cantidad de Varones: ${totalV} \n  
