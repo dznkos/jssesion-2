@@ -182,7 +182,7 @@ function getCategoria(cat) {
     
 var listPacientes = []
 
-function ejercicio4() {
+function registrarPaciente() {
   
   var edad = parseInt(document.getElementById('edad').value)     
   var sexo = document.querySelector('#sexo').value
