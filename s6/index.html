@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Validación de Formularios</title>
+</head>
+<body>
+    <h1>Validación de formularios</h1>
+    <form name="frmDatos" 
+                id="frmDatos" 
+                action="index.html"
+                onsubmit="return validarDatos()">
+        <label for="txtNombre">Nombre:</label>
+        <input type="text" name="txtNombre" 
+                id="txtNombre" maxlength="25"
+                required>
+        <br>
+        <label for="cboZona">Zona:</label>
+        <select name="cboZona" id="cboZona">
+            <option value="0" selected>- Elija una Opción -</option>
+            <option value="1">Zona 1</option>
+            <option value="2">Zona 2</option>
+            <option value="3">Zona 3</option>
+            <option value="4">Zona 4</option>
+        </select>
+        <br>
+        <label for="txtCorreo">Correo:</label>
+        <input type="email" name="txtCorreo" 
+                id="txtCorreo" maxlength="50"
+                required>
+        <br>
+        <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
+        <input type="date" name="txtFechaNacimiento" 
+                id="txtFechaNacimiento" required>
+        <br>
+        <label for="chkTerminos">Términos y condiciones:</label>
+        <input type="checkbox" name="chkTerminos" 
+                id="chkTerminos" required>
+        <br>
+        <label for="rdbSexo">Sexo:</label>
+        <input type="radio" name="rdbSexo" 
+                id="rdbSexo" value="M"  checked>Masculino
+
+        <input type="radio" name="rdbSexo" 
+                id="rdbSexo" value="F" >Femenino
+        <br>
+        <input type="submit" value="Enviar">
+
+    </form>
+    <script src="js/prueba01.js"></script>
+</body>
+</html>

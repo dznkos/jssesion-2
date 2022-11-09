@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Eventos  de Formularios</title>
+    </head>
+    <body>  
+        <form>
+            Nota: 
+            <input type="range" min="0" max="20" 
+                    value="0" name="txtNota" id="txtNota"
+                    onchange="f01()">
+            <label id="lblNota">0</label>
+            <br>
+            <input type="text" name="txtNombre" 
+                    id="txtNombre" maxlength="25"
+                    onfocus="f02()"
+                    onblur="f03()"
+                    style="background-color:rgb(255, 255, 255)">
+            <label id="lblNombre">Nombre: </label>
+            <br>
+            <br>
+            <label id="lblZona" for="cboZona">Zona: </label>
+            <select name="cboZona" id="cboZona" onchange="f04()">
+                <option value="0" selected>- Elija una Opción -</option>
+                <option value="1">Zona 1</option>
+                <option value="2">Zona 2</option>
+                <option value="3">Zona 3</option>
+                <option value="4">Zona 4</option>
+            </select>
+        </form>
+        <script src="js/prueba02.js"></script>
+    </body>
+
+</html>

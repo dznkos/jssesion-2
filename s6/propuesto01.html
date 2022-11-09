@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesto</title>
+</head>
+<body>
+
+  <form name="frmDatos" id="frmDatos" 
+    action="propuesto01.js" 
+    >
+    <label for="txtNombre">Nota 1 :</label>
+    <input type="range" id="nota1" name="nota1" min="0" max="20" onchange="f01()" required>
+    <label id="lblnota1">0</label><br><br>
+    <label for="txtNombre">Nota 2 :</label>
+    <input type="range" id="nota2" name="nota2" min="0" max="20" onchange="f02()" required>
+    <label id="lblnota2">0</label><br><br>
+    <label for="txtNombre">Nota 3 :</label>
+    <input type="range" id="nota3" name="nota3" min="0" max="20" onchange="f03()" required>
+    <label id="lblnota3">0</label><br><br>
+    <label for="txtNombre">Nota 4 :</label>
+    <input type="range" id="nota4" name="nota4" min="0" max="20" onchange="f04()" required>
+    <label id="lblnota4">0</label><br><br>
+    <label for="txtNombre">Nota 5 :</label>
+    <input type="range" id="nota5" name="nota5" min="0" max="20" onchange="f05()" required>
+    <label id="lblnota5">0</label><br>
+    <br>
+    <label for="rdbTipo">Tipo:</label>
+    <input type="radio" name="rdbTipo" 
+        id="rdbTipo" value="R" checked>Regular
+    <br>
+    <input type="radio" name="rdbTipo" 
+        id="rdbTipo" value="E" >Especial
+    <br>
+    <input type="button" onclick="procesar()" value="Enviar"/>
+    <br>
+    Respuesta:<label for="respuesta" id="lblrespuesta"></label>
+    <br>
+  </form>
+  
+  <script src="js/propuesto01.js"></script>
+</body>
+</html>
