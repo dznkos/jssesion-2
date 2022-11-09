@@ -114,23 +114,41 @@ de tal modo que se elija el articulo de una lista de selección y se elija si se
     Disco Duro(100 dolares). -->
 
 
-  <h3>Ejercicio 3</h3>
-  <div class="mb-3">
-    <select id="cdbaddprod" class="form-select" aria-label="Default select example" >
-        <option selected> - Selecciona una opción - </option>
-        <option value="1">Procesador</option>
-        <option value="2">Memoria</option>
-        <option value="3">Disco Duro</option>
-    </select>
-    <input type="radio" name="rdbpromo" 
-            id="rdbpromo" value="C"  checked>Con Promocion
-
-    <input type="radio" name="rdbpromo" 
-            id="rdbpromo" value="S" >Sin Promocion
-    <br>
-    <button class="btn btn-dark" onclick="addprod()">Agregar</button> <br>
+  
+  <div class="my-5">
+    <h3>Ejercicio 3</h3>
+    <div class="my-3">
+        <select id="cdbaddprod" class="form-select" aria-label="Default select example" >
+            <option selected> - Selecciona una opción - </option>
+            <option value="1">Procesador</option>
+            <option value="2">Memoria</option>
+            <option value="3">Disco Duro</option>
+        </select>
+    </div>
+    
     <div class="mb-3">
-        <textarea class="form-text p-4" name="txaprod" id="txaprod" cols="50" rows="10" ></textarea>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="rdbpromo" 
+                    id="rdbpromo" value="C" >
+            <label for="rdbpromo" class="form-check-label">Con Promocion </label> 
+        </div>
+        <div class="form-check mb-3">
+            <input class="form-check-input" type="radio" name="rdbpromo" 
+                    id="rdbpromo" value="S" >
+            <label for="rdbpromo" class="form-check-label">Sin Promocion </label> 
+        </div>        
+    </div>
+    <button class="btn btn-dark my-3" onclick="addprod()">Agregar</button>
+    
+    
+    
+    <div class="form-floating my-3">
+        <textarea class="form-control" 
+        placeholder="No agrego ningun producto"
+        style="width: 800px; height: 320px;"
+        name="txaprod" 
+        id="txaprod" cols="50" rows="10" ></textarea>
+        <label for="txaprod">Productos</label>
     </div>
 
 </div>

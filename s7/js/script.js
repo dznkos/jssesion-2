@@ -109,8 +109,7 @@ function addprod() {
     }    
   }
 
-  var indice = document.getElementById("cdbaddprod").selectedIndex;
-  console.log(indice)  
+  var indice = document.getElementById("cdbaddprod").selectedIndex; 
   switch (indice) {
     case 1:
       add = `Procesado 300 dolares - ${(promo)=='C'? 'Con promoción': 'Sin promoción'} \n`
@@ -122,6 +121,8 @@ function addprod() {
       add = `Disco duro 100 dolares - ${(promo)=='C'? 'Con promoción': 'Sin promoción'} \n`
       break;  
     default:
+      alert('Debe seleccionar un producto')
+      return;
       break;
   }
 
