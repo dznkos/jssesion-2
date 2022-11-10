@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        var efecto = true;
+        const tefecto = 2000;
+
+        $(document).ready(function(){
+            $("#btnOcultar").click(function(){
+                //$("#p01").hide();
+                //que se oculte despues de 5 segundos
+                //$("#p01").hide(2000);
+                //que cambie de color despues de 5 segundos
+                //$("#p01").css("color","red");
+                //que se oculte y cambie de color despues de 5 segundos
+                //$("#p01").hide(2000).css("color","red");
+                //que se oculte y cambie de color despues de 5 segundos y que se muestre despues de 5 segundos
+                $("#p01").hide(tefecto).css("color","red").show(tefecto);
+            });
+            $("#btnMostrar").click(function(){
+                $("#p01").show();
+            });
+            $("#btnLista").click(function(){
+                if(efecto)
+                    $("ol li:first").hide(tefecto);
+                    else
+                    $("ol li:first").show(tefecto);
+                efecto = !efecto;
+            });
+            $("p").mouseover(function(){
+                $(this).css("color","red");
+            });
+            $("p").mouseleave(function(){
+                $(this).css("color","black");
+            });
+
+            $('#tabla1 tr').mouseover(function(){
+              
+              $(this).css("color", "blue");
+              $(this).css("background-color", "grey");
+              $(this).css("transition", "2s");
+            })
+
+            $("#tabla1 tr").mouseleave(function(){
+                $(this).css("color","black");
+                $(this).css("background-color","white");
+                $(this).css("transition", "2s");
+            });
+
+           
+            $("#btnTable1").click(function(){
+              $("#tabla1 tr").hide()
+            })
+            $("#btnTable2").click(function(){
+              $("#tabla1 tr:first").hide(1000)
+            })
+            $("#btnTable3").click(function(){
+              $("#tabla1 tr:last").hide(2000)
+            })
+            $("#btnTable4").click(function(){
+              $("#tabla1 tr td:nth-child(n+1)").hide(3000)
+            })
+
+            // $("#form-client").
+            $("#btncurso").click( function(){
+
+              
+                var curso = $("#curso option:selected").val();
+                var ciclo = $("#ciclo option:selected").val();
+               
+
+              if (curso == 1 && ciclo == 1) {                
+                $("#tablads1").css("display","block");
+                $("#tablads2").css("display","none");
+                $("#tabladev1").css("display","none");
+                $("#tabladev2").css("display","none");
+              }
+              if (curso == 1 && ciclo == 2) {  
+                $("#tablads1").css("display","none");
+                $("#tablads2").css("display","block");
+                $("#tabladev1").css("display","none");
+                $("#tabladev2").css("display","none");
+              }
+
+              if (curso == 2 && ciclo == 1) {                
+                $("#tablads1").css("display","none");
+                $("#tablads2").css("display","none");
+                $("#tabladev1").css("display","block");
+                $("#tabladev2").css("display","none");
+              }
+              if (curso == 2 && ciclo == 2) {  
+                $("#tablads1").css("display","none");
+                $("#tablads2").css("display","none");
+                $("#tabladev1").css("display","none");
+                $("#tabladev2").css("display","block");
+              }
+
+            })
+
+        });
+    </script>
+
+
+    <title>Trabajando con JQuery</title>
+</head>
+<body>
+    <h1>Efectos con JQuery</h1>
+    <p id="p01">Este parrafo de prueba.</p>
+    <p id="p02">Este es otro parrafo.</p>
+    <button id="btnOcultar">Ocultalos</button>
+    <button id="btnMostrar">Muestralos</button>
+    <h2>Efectos Sobre listas</h2>
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+    </ol>
+    <button id="btnLista">Efecto</button>
+
+    <table id="tabla1" border="1" style="margin-top: 10px;" >
+      <tr>
+        <td>Nombres</td>
+        <td>Edad</td>
+        <td>Sexo</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+      </tr>
+    </table>
+
+    <button id="btnTable1">Efecto1</button>
+    <button id="btnTable2">Efecto2</button>
+    <button id="btnTable3">Efecto3</button>
+    <button id="btnTable4">Efecto4</button>
+
+    <!-- <h3>Ejercicio Propuesto</h3>
+
+    <form action="" id="form-client">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Ingrese nombre">
+      </div>
+      <div>
+        <label for="apellidos">Apellidos</label>
+        <input type="text" id="apellidos" placeholder="Ingrese apellidos">
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Ingrese email">
+      </div>
+      <div>
+        <label for="email">Genero</label>
+        <select name="sexo" id="sexo">
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+      </div>
+      <div>
+        <label for="fecha">F. Nacimiento:</label>
+        <input type="date" id="fechanac">
+      </div>
+    </form> -->
+
+    <!-- Ejercicio 02
+Un instituto desea mostrar a los alumnos los cursos que se 
+dictan por carrera y por ciclo.
+Asuma dos carreras, dos ciclos por carrera y 3 cursos por ciclo. 
+ Cada curso tiene: codigo, nombre, cantidad de creditos y duración en horas.
+Crear un documento web que permita elegir la carrera y el ciclo 
+para mostrar una tabla con los cursos que corresponde a cada uno. -->
+
+<hr>
+
+<h2>Propuesto</h2>
+<div>
+  <div>
+    <label for="curso">Curso</label>
+    <select name="curso" id="curso">
+      <option value="1">Design Web</option>
+      <option value="2">Developer Web</option>
+    </select>
+    <label for="ciclo">Ciclo</label>
+    <select name="ciclo" id="ciclo">
+      <option value="1">Ciclo 1</option>
+      <option value="2">Ciclo 2</option>
+    </select>
+
+    <button id="btncurso">Buscar</button>
+  </div>
+
+  <table id="tablads1" border="1"  style="display: none; margin-top: 10px;">
+    <tr>
+      <td>Curso </td>
+      <td>Creditos</td>
+    </tr>
+    <tr>
+      <td>Curso photoshop</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Curso Ilustrator</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Curso Otro</td>
+      <td>2</td>
+    </tr>
+  </table>
+
+  <table id="tablads2" border="1"  style="display: none;  margin-top: 10px;">
+    <tr>
+      <td>Curso </td>
+      <td>Creditos</td>
+    </tr>
+    <tr>
+      <td>Curso photoshop 2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Curso Ilustrator 2</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Curso Otro 2</td>
+      <td>3</td>
+    </tr>
+  </table>
+
+  <table id="tabladev1" border="1"  style="display: none;  margin-top: 10px;">
+    <tr>
+      <td>Curso </td>
+      <td>Creditos</td>
+    </tr>
+    <tr>
+      <td>Curso Algoritmos</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Curso C++</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Curso Mathe</td>
+      <td>2</td>
+    </tr>
+  </table>
+
+  <table id="tabladev2" border="1"  style="display: none;  margin-top: 10px;">
+    <tr>
+      <td>Curso </td>
+      <td>Creditos</td>
+    </tr>
+    <tr>
+      <td>Curso Python</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Curso Javascript</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Curso Microservicios</td>
+      <td>2</td>
+    </tr>
+  </table>
+
+
+</div>
+
+</body>
