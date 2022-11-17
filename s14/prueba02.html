@@ -1,0 +1,26 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajando con Angular JS</title>
+    
+    <!--cargando librerias de Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+    <h1>Ejemplo Angular JS</h1>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        nombre: <input type="text" ng-model="nombre">
+        <h3>mi nombre es: {{nombre}}</h3>
+    </div>
+
+    <script>
+        var app= angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.nombre = "juan";
+        });
+    </script>
+
+</body>
+</html>

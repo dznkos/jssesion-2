@@ -1,0 +1,177 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajando con Angular JS</title>
+      <!--cargando librerias de Angular JS-->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+ </head>
+<body>
+    <h1>Ejemplo Angular JS</h1>
+
+    <!-- nombre: <input type="text" ng-model="nombre">
+    <h3>mi nombre es: {{nombre}}</h3> -->
+
+    <!-- Ejercicio 01 [tiempo=15 min]:
+  Desarrollar una aplicacion angular que permita mostrar
+  los datos de un aula y sus 5 alumnos(id, nombre, promedio, estado) 
+  junto con el curso que llevan(id, nombre, precio) yel profesor del curos(id, nombre).
+  Use Scopes para el caso. -->
+
+    <div  ng-app="myApp" >
+      <div ng-controller="myCtrl">
+        <h2>Data</h2>
+        <table>
+          <tr>
+            <td>idCurso</td>
+            <td ng-model="idCurso">{{ idCurso }}</td>            
+          </tr>
+          <tr>
+            <td>Nombre Curso</td>
+            <td ng-model="nomCurso">{{ nomCurso }}</td>            
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td ng-model="precioCurso">{{ precioCurso }}</td>            
+          </tr>
+          <tr>
+            <td>idProfesor</td>
+            <td ng-model="idProfesor">{{ idProfesor }}</td>            
+          </tr>
+          <tr>
+            <td>Nombre Profesor</td>
+            <td ng-model="nomProfesor">{{ nomProfesor }}</td>            
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>Nombre</td>
+            <td>Promedio</td>
+            <td>Estado</td>
+          </tr>
+          <tr>
+            <td ng-model="idAlumno1">{{ idAlumno1 }}</td>
+            <td ng-model="nomAlumno1">{{ nomAlumno1 }}</td>
+            <td ng-model="proAlumno1">{{ proAlumno1 }}</td>
+            <td ng-model="estAlumno1">{{ estAlumno1 }}</td>
+          </tr>
+          <tr>
+            <td ng-model="idAlumno2">{{ idAlumno2 }}</td>
+            <td ng-model="nomAlumno2">{{ nomAlumno2 }}</td>
+            <td ng-model="proAlumno2">{{ proAlumno2 }}</td>
+            <td ng-model="estAlumno2">{{ estAlumno2 }}</td>
+          </tr>
+          <tr>
+            <td ng-model="idAlumno3">{{ idAlumno3 }}</td>
+            <td ng-model="nomAlumno3">{{ nomAlumno3 }}</td>
+            <td ng-model="proAlumno3">{{ proAlumno3 }}</td>
+            <td ng-model="estAlumno3">{{ estAlumno3 }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <script>
+
+      var datos =  [
+        {salon_id: 1, salon_nombre: "A", salon_capacidad: 5,
+            salon_profesor: {profesor_id: 1, profesor_nombre: "Pamela", profesor_apellido: "Lopez"},
+            salon_alumnos: [
+              {alumno_id: 1, alumno_nombre: "Juan", alumno_promedio: 12,alumno_correo:"correo1@gmail.com", alumno_estado: true}, 
+              {alumno_id: 2, alumno_nombre: "Maria", alumno_promedio: 15,alumno_correo:"correo2@gmail.com", alumno_estado: true},
+              {alumno_id: 3, alumno_nombre: "Pedro", alumno_promedio: 18,alumno_correo:"correo3@gmail.com", alumno_estado: true},
+              {alumno_id: 4, alumno_nombre: "Carlos", alumno_promedio: 18,alumno_correo:"correo4@gmail.com", alumno_estado: true},
+              {alumno_id: 5, alumno_nombre: "Jose", alumno_promedio: 17,alumno_correo:"correo5@gmail.com", alumno_estado: true}
+            ],
+            salon_curso: {curso_id: 1, curso_nombre: "Cosmiatria I", curso_duracion: 30, curso_precio: 200}},
+        {salon_id: 2, salon_nombre: "B", salon_capacidad: 5,
+            salon_profesor: {profesor_id: 1, profesor_nombre: "Naomy", profesor_apellido: "Castro"},
+            salon_alumnos: [
+              {alumno_id: 1, alumno_nombre: "Pablo", alumno_promedio: 12,alumno_correo:"correo1@gmail.com", alumno_estado: true}, 
+              {alumno_id: 2, alumno_nombre: "Mario", alumno_promedio: 15,alumno_correo:"correo2@gmail.com", alumno_estado: true},
+              {alumno_id: 3, alumno_nombre: "Roberto", alumno_promedio: 18,alumno_correo:"correo3@gmail.com", alumno_estado: true},
+              {alumno_id: 4, alumno_nombre: "Carlos", alumno_promedio: 18,alumno_correo:"correo4@gmail.com", alumno_estado: true},
+              {alumno_id: 5, alumno_nombre: "Juan", alumno_promedio: 17,alumno_correo:"correo5@gmail.com", alumno_estado: true}
+            ],
+            salon_curso: {curso_id: 1, curso_nombre: "Cosmiatria II", curso_duracion: 30, curso_precio: 300}}
+      ]
+
+      var app= angular.module('myApp', []);
+      app.controller('myCtrl', function($scope) {
+        $scope.items = []; 
+
+        for (let i = 0; i < datos.length; i++) {          
+          for (let j = 0; j < datos[i].salon_alumnos.length; j++) {           
+            
+            $scope.idCurso = '';
+            $scope.nomCurso = '';
+            $scope.precioCurso = '';
+            $scope.idProfesor = '';
+            $scope.nomProfesor = '';
+            $scope.idAlumno1 = '';
+            $scope.nomAlumno1 = '';
+            $scope.proAlumno1 = '';
+            $scope.estAlumno1 = '';
+            $scope.idAlumno2 = '';
+            $scope.nomAlumno2 = '';
+            $scope.proAlumno2 = '';
+            $scope.estAlumno2 = '';
+            $scope.idAlumno3 = '';
+            $scope.nomAlumno3 = '';
+            $scope.proAlumno3 = '';
+            $scope.estAlumno3 = '';
+          }          
+        }
+        
+      });
+  </script>
+    <script src="js/ejercicio01.js"></script>
+
+  
+</body>
+</html>
+<!-- 
+$scope.items[0] = [
+datos[0].salon_curso.curso_nombre,  
+datos[0].salon_profesor.profesor_nombre,
+datos[0].salon_profesor.profesor_apellido,
+]
+
+$scope.items[1] = [
+datos[0].salon_alumnos[0].alumno_id,
+datos[0].salon_alumnos[0].alumno_nombre,
+datos[0].salon_alumnos[0].alumno_correo,
+datos[0].salon_alumnos[0].alumno_promedio,            
+datos[0].salon_alumnos[0].alumno_estado,            
+]
+$scope.items[2] = [
+datos[0].salon_alumnos[1].alumno_id,
+datos[0].salon_alumnos[1].alumno_nombre,
+datos[0].salon_alumnos[1].alumno_correo,
+datos[0].salon_alumnos[1].alumno_promedio,            
+datos[0].salon_alumnos[1].alumno_estado,            
+]
+$scope.items[3] = [
+datos[0].salon_alumnos[2].alumno_id,
+datos[0].salon_alumnos[2].alumno_nombre,
+datos[0].salon_alumnos[2].alumno_correo,
+datos[0].salon_alumnos[2].alumno_promedio,            
+datos[0].salon_alumnos[2].alumno_estado,            
+]
+$scope.items[4] = [
+datos[0].salon_alumnos[3].alumno_id,
+datos[0].salon_alumnos[3].alumno_nombre,
+datos[0].salon_alumnos[3].alumno_correo,
+datos[0].salon_alumnos[3].alumno_promedio,            
+datos[0].salon_alumnos[3].alumno_estado,            
+]
+$scope.items[5] = [
+datos[0].salon_alumnos[4].alumno_id,
+datos[0].salon_alumnos[4].alumno_nombre,
+datos[0].salon_alumnos[4].alumno_correo,
+datos[0].salon_alumnos[4].alumno_promedio,            
+datos[0].salon_alumnos[4].alumno_estado,            
+] -->

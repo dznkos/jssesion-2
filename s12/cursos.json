@@ -1,0 +1,15 @@
+[
+  {
+      "id": 1,
+      "nombre": "HTML",
+      "duracion": 24,
+      "valor": 3
+    },
+    {
+      "id": 2,
+      "nombre": "JavaScript",
+      "duracion": 32,
+      "valor": 5
+    }
+    
+]

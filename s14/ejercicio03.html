@@ -1,0 +1,125 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajando con Angular JS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
+    <!--cargando librerias de Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+<body>
+    <h1>Ejemplo Angular JS</h1>
+    <!-- Desarrollar una aplicacion angular que permita 
+        ingresar y mostrar los datos de un aula 
+        y sus 3 alumnos(id, nombre, promedio, estado) junto 
+        con el curso que llevan(id, nombre, precio) y el 
+        profesor del curos(id, nombre).
+        Use Scopes y formularios para el caso -->
+     
+    <div ng-app="myApp" ng-controller="formCtrl">
+
+      <div class="container1" >
+        <form name="myForm">
+            <label for="Curso">Curso</label><br>
+            id Curso: <input name="idCurso" type="text" ng-model="idCurso" minlength="2" maxlength="2" required>
+            <p style="text-align: center;">{{ myForm.idCurso.$valid ? 'Campo valido' : 'id Curso no valido' }}</p>   
+            <br>
+            nombre Curso: <input name="nomCurso" type="text" ng-model="nomCurso" minlength="5" required>
+            <p style="text-align: center;">{{ myForm.nomCurso.$valid }}</p>
+            <br>
+            precio Curso: <input name="precioCurso" type="text" ng-model="precioCurso" required>
+            <p style="text-align: center;">{{ myForm.precioCurso.$valid }}</p>       
+            <br>
+            <hr><label for="Profesor">Profesor</label><br>
+            id: <input name="idProfesor" type="text" ng-model="idProfesor" required>
+            <p style="text-align: center;">{{ myForm.idProfesor.$valid }}</p>   
+            <br>
+            nombre: <input name="nomProfesor" type="text" ng-model="nomProfesor" required>
+            <p style="text-align: center;">{{ myForm.nomProfesor.$valid }}</p>
+            <br><hr>
+            <label for="Alumno">Alumno 1</label><br>
+            Id: <input type="text" ng-model="idAlumno1" required><br>
+            Nombre: <input type="text" ng-model="nomAlumno1" required><br>
+            Promedio: <input type="text" ng-model="proAlumno1" required><br>
+            Estado: <input type="text" ng-model="estAlumno1" required><br>
+            <label for="Alumno">Alumno 2</label><br>
+            Id: <input type="text" ng-model="idAlumno2"><br>
+            Nombre: <input type="text" ng-model="nomAlumno2"><br>
+            Promedio: <input type="text" ng-model="proAlumno2"><br>
+            Estado: <input type="text" ng-model="estAlumno2"><br>
+            <label for="Alumno">Alumno 3</label><br>
+            Id: <input type="text" ng-model="idAlumno3"><br>
+            Nombre: <input type="text" ng-model="nomAlumno3"><br>
+            Promedio: <input type="text" ng-model="proAlumno3"><br>
+            Estado: <input type="text" ng-model="estAlumno3"><br>
+        </form>
+      </div>
+        <!-- <h3>mi nombre es: {{nombre}}</h3> -->
+      <hr>
+
+      <div class="container2" >
+        <h3>Datos</h3>
+        <table border="1">
+          <tr>
+            <td>idCurso</td>
+            <td>{{ idCurso }}</td>                     
+          </tr>
+          <tr>
+            <td>Nombre Curso</td>
+            <td>{{ nomCurso }}</td>            
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td>{{ precioCurso }}</td>     
+          </tr>
+          <tr>
+            <td>idProfesor</td>
+            <td>{{ idProfesor }}</td>         
+          </tr>
+          <tr>
+            <td>Nombre Profesor</td>
+            <td>{{ nomProfesor }}</td>            
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>Nombre</td>
+            <td>Promedio</td>
+            <td>Estado</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno1 }}</td>
+            <td>{{ nomAlumno1 }}</td>
+            <td>{{ proAlumno1 }}</td>
+            <td>{{ estAlumno1 }}</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno2 }}</td>
+            <td>{{ nomAlumno2 }}</td>
+            <td>{{ proAlumno2 }}</td>
+            <td>{{ estAlumno2 }}</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno3 }}</td>
+            <td>{{ nomAlumno3 }}</td>
+            <td>{{ proAlumno3 }}</td>
+            <td>{{ estAlumno3 }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+        var app= angular.module('myApp', []);
+        app.controller('formCtrl', function($scope) {
+            
+
+
+        });
+    </script>
+
+</body>
+</html>

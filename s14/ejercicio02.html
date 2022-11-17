@@ -1,0 +1,128 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Trabajando con Angular JS</title>
+    
+    <!--cargando librerias de Angular JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+  </head>
+<body>
+    <h1>Ejemplo Angular JS</h1>
+    <!-- Desarrollar una aplicacion angular que permita 
+        ingresar y mostrar los datos de un aula 
+        y sus 3 alumnos(id, nombre, promedio, estado) junto 
+        con el curso que llevan(id, nombre, precio) y el 
+        profesor del curos(id, nombre).
+        Use Scopes y formularios para el caso -->
+     
+    <div ng-app="myApp" ng-controller="formCtrl">
+
+      <div class="container1" >
+        <form>
+            <label for="Curso">Curso</label><br>
+            id Curso: <input type="text" ng-model="idCurso"><br>
+            nombre Curso: <input type="text" ng-model="nomCurso"><br>
+            precio Curso: <input type="text" ng-model="precioCurso"><br>
+            <hr><label for="Profesor">Profesor</label><br>
+            id: <input type="text" ng-model="idProfesor"><br>
+            nombre: <input type="text" ng-model="nomProfesor"><br><hr>
+            <label for="Alumno">Alumno 1</label><br>
+            Id: <input type="text" ng-model="idAlumno1"><br>
+            Nombre: <input type="text" ng-model="nomAlumno1"><br>
+            Promedio: <input type="text" ng-model="proAlumno1"><br>
+            Estado: <input type="text" ng-model="estAlumno1"><br>
+            <label for="Alumno">Alumno 2</label><br>
+            Id: <input type="text" ng-model="idAlumno2"><br>
+            Nombre: <input type="text" ng-model="nomAlumno2"><br>
+            Promedio: <input type="text" ng-model="proAlumno2"><br>
+            Estado: <input type="text" ng-model="estAlumno2"><br>
+            <label for="Alumno">Alumno 3</label><br>
+            Id: <input type="text" ng-model="idAlumno3"><br>
+            Nombre: <input type="text" ng-model="nomAlumno3"><br>
+            Promedio: <input type="text" ng-model="proAlumno3"><br>
+            Estado: <input type="text" ng-model="estAlumno3"><br>
+        </form>
+      </div>
+        <!-- <h3>mi nombre es: {{nombre}}</h3> -->
+      <hr>
+
+      <div class="container2" >
+        <h2>Data</h2>
+        <table border="1">
+          <tr>
+            <td>idCurso</td>
+            <td>{{ idCurso }}</td>            
+          </tr>
+          <tr>
+            <td>Nombre Curso</td>
+            <td>{{ nomCurso }}</td>            
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td>{{ precioCurso }}</td>            
+          </tr>
+          <tr>
+            <td>idProfesor</td>
+            <td>{{ idProfesor }}</td>            
+          </tr>
+          <tr>
+            <td>Nombre Profesor</td>
+            <td>{{ nomProfesor }}</td>            
+          </tr>
+          <tr>
+            <td>id</td>
+            <td>Nombre</td>
+            <td>Promedio</td>
+            <td>Estado</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno1 }}</td>
+            <td>{{ nomAlumno1 }}</td>
+            <td>{{ proAlumno1 }}</td>
+            <td>{{ estAlumno1 }}</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno2 }}</td>
+            <td>{{ nomAlumno2 }}</td>
+            <td>{{ proAlumno2 }}</td>
+            <td>{{ estAlumno2 }}</td>
+          </tr>
+          <tr>
+            <td>{{ idAlumno3 }}</td>
+            <td>{{ nomAlumno3 }}</td>
+            <td>{{ proAlumno3 }}</td>
+            <td>{{ estAlumno3 }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <script>
+        var app= angular.module('myApp', []);
+        app.controller('formCtrl', function($scope) {
+            $scope.idCurso = '';
+            $scope.nomCurso = '';
+            $scope.precioCurso = '';
+            $scope.idProfesor = '';
+            $scope.nomProfesor = '';
+            $scope.idAlumno1 = '';
+            $scope.nomAlumno1 = '';
+            $scope.proAlumno1 = '';
+            $scope.estAlumno1 = '';
+            $scope.idAlumno2 = '';
+            $scope.nomAlumno2 = '';
+            $scope.proAlumno2 = '';
+            $scope.estAlumno2 = '';
+            $scope.idAlumno3 = '';
+            $scope.nomAlumno3 = '';
+            $scope.proAlumno3 = '';
+            $scope.estAlumno3 = '';
+        });
+    </script>
+
+</body>
+</html>

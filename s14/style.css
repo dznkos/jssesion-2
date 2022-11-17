@@ -1,0 +1,14 @@
+.container1 {
+
+  float: left;
+}
+
+.container2 {
+  padding: 20px;
+  float: left;
+}
+
+.container2 table{
+  text-align: center;
+  border: 1px;
+}
